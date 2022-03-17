@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, EditActivity::class.java)
             intent.putExtra("id", bookList[position].id)
             startActivity(intent)
-            Log.e("test","se activo")
         }
 
         initList()

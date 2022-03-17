@@ -10,5 +10,7 @@
     <string name="a_o">Año</string>
     <string name="imagen">Imagen</string>
     <string name="query">Buscar libro</string>
+    <string name="categoria">Categoria</string>
+    <string name="precio">Precio</string>
 
 </resources>
