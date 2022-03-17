@@ -24,6 +24,10 @@ class ListAdapter(private val mContext: Context, private val bookList: List<Book
         val book = bookList[position]
 
         layout.findViewById<TextView>(R.id.title_tv).text = book.title
+        layout.findViewById<TextView>(R.id.author_tv).text = book.author
+        layout.findViewById<TextView>(R.id.publisher_tv).text = book.publisher
+        layout.findViewById<TextView>(R.id.year_tv).text = book.year.toString()
+
         val uriImage = ControllerImage.getUri(context, book.id.toLong())
         layout.findViewById<ImageView>(R.id.imageView).setImageURI(uriImage)
 
@@ -33,7 +37,7 @@ class ListAdapter(private val mContext: Context, private val bookList: List<Book
                 .setPositiveButton("Sí", DialogInterface.OnClickListener {
                         dialog, id ->
                     val database = BookDatabase.getDatabase(mContext)
-                    val book = Book(book.image, book.title, book.author, book.publisher, book.year, book.id)
+                    val book = Book(book.image, book.title, book.author, book.publisher, book.year, book.price, book.genre, book.id)
                     CoroutineScope(Dispatchers.IO).launch {
                         database.bookDAO().delete(book)
                         uriImage?.let {
