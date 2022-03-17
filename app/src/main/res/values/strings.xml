@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Biblioteca</string>
+    <string name="image">image</string>
+    <string name="agregar">Agregar</string>
+    <string name="autor">Autor</string>
+    <string name="editorial">Editorial</string>
+    <string name="agregar_una_imagen">Agregar una imagen</string>
+    <string name="t_tulo">Título</string>
+    <string name="guardar">Guardar</string>
+    <string name="a_o">Año</string>
+    <string name="imagen">Imagen</string>
+    <string name="query">Buscar libro</string>
+
+</resources>
