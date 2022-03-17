@@ -17,6 +17,10 @@ data class Book (
     val publisher: String,
     @ColumnInfo(name = "year")
     val year: Int,
+    @ColumnInfo(name = "price")
+    val price: Double,
+    @ColumnInfo(name = "genre")
+    val genre: String,
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Int = 0,

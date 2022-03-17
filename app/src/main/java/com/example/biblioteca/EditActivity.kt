@@ -26,6 +26,8 @@ class EditActivity : AppCompatActivity() {
     var editAuthorTV : TextView? = null
     var editPublisherTV : TextView? = null
     var editYearTV : TextView? = null
+    var editPriceTV : TextView? = null
+    var editGenreTV : TextView? = null
     var editBookButton : Button? = null
     var addImageButton : Button? = null
 
@@ -44,6 +46,9 @@ class EditActivity : AppCompatActivity() {
         editAuthorTV = findViewById(R.id.add_author_tv)
         editPublisherTV = findViewById(R.id.add_publisher_tv)
         editYearTV = findViewById(R.id.add_year_tv)
+        editPriceTV = findViewById(R.id.add_price_tv)
+        editGenreTV = findViewById(R.id.add_genre_tv)
+
         editBookButton = findViewById(R.id.add_btn)
         addImageButton = findViewById(R.id.addImage_Btn)
 
@@ -80,6 +85,8 @@ class EditActivity : AppCompatActivity() {
                 editAuthorTV?.text = book.author
                 editPublisherTV?.text = book.publisher
                 editYearTV?.text = book.year.toString()
+                editPriceTV?.text = book.price.toString()
+                editGenreTV?.text = book.genre
 
                 if (book.image != 0) {
                     val uriImage = ControllerImage.getUri(this, book.id.toLong())
@@ -108,7 +115,9 @@ class EditActivity : AppCompatActivity() {
         val author = editAuthorTV?.text.toString()
         val publisher = editPublisherTV?.text.toString()
         val year = editYearTV?.text.toString()
-        val book = Book(R.drawable.missing, title , author, publisher, year.toInt())
+        val price = editPriceTV?.text.toString()
+        val genre = editGenreTV?.text.toString()
+        val book = Book(R.drawable.missing, title , author, publisher, year.toInt(), price.toDouble(), genre)
         CoroutineScope(Dispatchers.IO).launch {
             val id = database.bookDAO().addBook(book)[0]
             uriImage?.let {
@@ -123,7 +132,9 @@ class EditActivity : AppCompatActivity() {
         val author = editAuthorTV?.text.toString()
         val publisher = editPublisherTV?.text.toString()
         val year = editYearTV?.text.toString()
-        val book = Book(R.drawable.missing, title , author, publisher, year.toInt(),id)
+        val price = editPriceTV?.text.toString()
+        val genre = editGenreTV?.text.toString()
+        val book = Book(R.drawable.missing, title , author, publisher, year.toInt(), price.toDouble(), genre, id)
         CoroutineScope(Dispatchers.IO).launch {
             database.bookDAO().updateBook(book)
             uriImage?.let {
